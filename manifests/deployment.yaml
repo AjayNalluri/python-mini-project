@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azure-auto
+  labels:
+    app: azure-auto
+    kubernetes.azure.com/generator: devhub
+  namespace: namespace-workflow-1724736074284
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: azure-auto
+  template:
+    metadata:
+      labels:
+        app: azure-auto
+    spec:
+      containers:
+        - name: azure-auto
+          image: acrworkflow1724736074284.azurecr.io/sample-deploy-1724736074284:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
